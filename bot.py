@@ -57,7 +57,8 @@ def predict(update, context):
 
 def main():
    # start the bot.
-    updater = Updater(os.environ.get('BOT_TOKEN'), use_context=True)
+    BOT_TOKEN =  os.environ.get('BOT_TOKEN')
+    updater = Updater(BOT_TOKEN, use_context=True)
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
 
@@ -68,11 +69,16 @@ def main():
     # Start the Bot
     updater.start_polling()
     print("Bot is running!")
+
+    PORT = int(os.environ.get('PORT', '8443'))
+
+    updater.start_webhook(
+        listen="0.0.0.0",
+        port=PORT,
+        url_path=BOT_TOKEN,
+        webhook_url="https://<appname>.herokuapp.com/" + BOT_TOKEN
+    )
     updater.idle()
-
-    port = os.getenv('PORT', default=8000)
-    updater.start_webhook(port=port)
-
 
 if __name__ == '__main__':
     main()
