@@ -5,7 +5,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 import os
 
-main_message = 'Bem-vindo à Rossman! Para prever o faturamento, digite o comando com ano e o mês nesse formato: /predict 01-2015'
+main_message = 'Bem-vindo à Rossman! Para prever o faturamento, digite o comando com ano e o mês (a partir do mês de agosto de 2015) nesse formato: /predict 8-2015'
 
 def start(update, context):
     update.message.reply_text(main_message)
