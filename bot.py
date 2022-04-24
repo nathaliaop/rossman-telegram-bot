@@ -56,6 +56,9 @@ def predict(update, context):
         update.message.reply_text('Adicione uma data ao comando!')
 
 def main():
+
+    os.environ['BOT_TOKEN'] = "5385864743:AAEiOs14z7a_ebSfsSXTkXogU516_j8X5q4"
+    os.environ['URL'] = "https://rossman-drugstore-telegram-bot.herokuapp.com/"
    # start the bot.
     BOT_TOKEN =  os.environ.get('BOT_TOKEN')
     URL = os.environ.get('URL')
@@ -67,19 +70,8 @@ def main():
     dp.add_handler(CommandHandler("start", start))
     dp.add_handler(CommandHandler("predict", predict))
 
-    # Start the Bot
     updater.start_polling()
     print("Bot is running!")
-
-    PORT = int(os.environ.get('PORT', '8443'))
-
-    updater.start_webhook(
-        listen="0.0.0.0",
-        port=PORT,
-        url_path=BOT_TOKEN,
-        webhook_url=URL + BOT_TOKEN
-    )
-    updater.idle()
 
 if __name__ == '__main__':
     main()
