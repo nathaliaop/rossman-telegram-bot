@@ -3,6 +3,7 @@ import requests, time
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+import os
 
 main_message = 'Bem-vindo à Rossman! Para prever o faturamento, digite o comando com ano e o mês nesse formato: /predict 01-2015'
 
@@ -54,9 +55,9 @@ def predict(update, context):
     else:
         update.message.reply_text('Adicione uma data ao comando!')
 
-if __name__ == '__main__':
+def main():
    # start the bot.
-    updater = Updater("5385864743:AAEiOs14z7a_ebSfsSXTkXogU516_j8X5q4", use_context=True)
+    updater = Updater(os.environ.get('BOT_TOKEN'), use_context=True)
     # Get the dispatcher to register handlers
     dp = updater.dispatcher
 
@@ -68,3 +69,10 @@ if __name__ == '__main__':
     updater.start_polling()
     print("Bot is running!")
     updater.idle()
+
+    port = os.environ.get('PORT', 5000)
+    updater.start_webhook(port=port)
+
+
+if __name__ == '__main__':
+    main()
