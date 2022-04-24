@@ -30,7 +30,7 @@ def predict(update, context):
             "Year": year,
             "Month": month
             })
-            time.sleep(5)
+            time.sleep(10)
 
             # if request is sucessful
             if(response.status_code == 200):
@@ -49,7 +49,7 @@ def predict(update, context):
 
             # if request is unsucessful
             else:
-                update.message.reply_text(f'{month}{year}')#'Ocorreu um erro na requisição')
+                update.message.reply_text('Dados não disponíveis ou ocorreu um erro na requisição')
     
     # if user message is empty
     else:
