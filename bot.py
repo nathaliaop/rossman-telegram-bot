@@ -70,7 +70,7 @@ def main():
     print("Bot is running!")
     updater.idle()
 
-    port = os.getenv('PORT', default=5000)
+    port = os.getenv('PORT', default=8000)
     updater.start_webhook(port=port)
 
 
