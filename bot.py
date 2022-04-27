@@ -95,9 +95,6 @@ def predict(update, context):
         update.message.reply_text(error_message)
 
 def main():
-
-    os.environ['BOT_TOKEN'] = "5385864743:AAEiOs14z7a_ebSfsSXTkXogU516_j8X5q4"
-    os.environ['URL'] = "https://rossman-drugstore-telegram-bot.herokuapp.com/"
    # start the bot.
     BOT_TOKEN =  os.environ.get('BOT_TOKEN')
     updater = Updater(BOT_TOKEN)
